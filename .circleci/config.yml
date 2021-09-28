@@ -18,19 +18,14 @@ jobs:
     executor:
       name: node/default
 
-    steps: 
+    steps:
       - checkout
-      
-      - node/install-packages
 
-      - run:
-          name: install netlify cli
-          command: sudo npm install netlify-cli -g
+      - node/install-packages
 
       - run:
           name: use netlify cli to deploy
           command: netlify deploy
-
 
 workflows:
   test-and-deploy-to-netlify:
@@ -39,7 +34,7 @@ workflows:
 
       - deploy-netlify:
           requires: [test]
-          
+
           filters:
             branches:
               only:
