@@ -1,0 +1,40 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+
+jobs:
+  test:
+    executor:
+      name: node/default
+
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test
+
+  deploy-netlify:
+    executor:
+      name: node/default
+
+    steps: 
+      - run:
+          name: install netlify cli
+          command: sudo npm install netlify-cli -g
+
+      - run:
+          name: use netlify cli to deploy
+          command: netlify deploy
+
+
+workflows:
+  test-and-deploy-to-netlify:
+    jobs:
+      - test
+
+      - deploy-netlify:
+          filters:
+            branches:
+              only:
+                - main
