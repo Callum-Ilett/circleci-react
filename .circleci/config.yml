@@ -14,28 +14,7 @@ jobs:
       - run:
           command: npm run test
 
-  deploy-netlify:
-    executor:
-      name: node/default
-
-    steps:
-      - checkout
-
-      - node/install-packages
-
-      - run:
-          name: use netlify cli to deploy
-          command: netlify deploy
-
 workflows:
-  test-and-deploy-to-netlify:
+  test:
     jobs:
       - test
-
-      - deploy-netlify:
-          requires: [test]
-
-          filters:
-            branches:
-              only:
-                - main
