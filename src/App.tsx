@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -18,6 +18,11 @@ function App() {
         >
           Learn React
         </a>
+
+        <small>
+          You are running this application in <b>{process.env.NODE_ENV}</b>{" "}
+          mode.
+        </small>
       </header>
     </div>
   );
