@@ -16,8 +16,13 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React DEV BUILD
+          Learn React
         </a>
+
+        <small>
+          You are running this application in <b>{process.env.NODE_ENV}</b>{" "}
+          mode.
+        </small>
       </header>
     </div>
   );
